@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+#chessBoard {
+  width: 640px;
+  height: 640px;
+  border: 1px solid black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.whiteSquare {
+  background-color: rgb(185, 37, 37);
+  height: 1,5625%;
+  width: 1,5625%;
+}
+
+.blackSquare {
+  background-color: black;
+  height: 1,5625%;
+  width: 1,5625%;
+}
