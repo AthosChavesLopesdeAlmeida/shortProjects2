@@ -21,16 +21,28 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
 }
 
 .whiteSquare {
-  background-color: rgb(185, 37, 37);
+  background-color: rgb(241, 241, 241);
   height: 1,5625%;
   width: 1,5625%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .blackSquare {
-  background-color: black;
+  background-color: rgb(32, 32, 32);
   height: 1,5625%;
   width: 1,5625%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#horse {
+  width: 60px;
+  height: 60px;
 }
