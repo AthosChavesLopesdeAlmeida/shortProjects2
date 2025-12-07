@@ -29,8 +29,14 @@ export async function createOption(inputVal, list, container) {
       bookOption.addEventListener('click', () => {
         console.log('livro criado');
         const bookElement = document.createElement('div');
-        bookElement.innerHTML = `Título: ${book.title || '—'} - Autor: ${book.author_name ? book.author_name[0] : 'Desconhecido'}`;
-        bookElement.classList.add('bookElement');
+        bookElement.innerHTML = `
+          <img src = "https://covers.openlibrary.org/b/id/${book.COVER_ID}-P.jpg" alt = "">
+          <div>
+          <p>Título: ${book.title || '—'}</p>
+          <br>
+          <p>Autor: ${book.author_name ? book.author_name[0] : 'Desconhecido'}</p></div>`;
+        
+          bookElement.classList.add('bookElement');
 
         container.appendChild(bookElement);
       });

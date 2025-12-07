@@ -21,3 +21,5 @@ export async function searchBook(inputVal) {
 
   return data;
 }
+
+searchBook('The brothers Karamazov');
