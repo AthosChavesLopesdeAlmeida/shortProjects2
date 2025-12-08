@@ -20,6 +20,4 @@ export async function searchBook(inputVal) {
     .slice(0, 7);
 
   return data;
-}
-
-searchBook('The brothers Karamazov');
+};

@@ -30,7 +30,7 @@ export async function createOption(inputVal, list, container) {
         console.log('livro criado');
         const bookElement = document.createElement('div');
         bookElement.innerHTML = `
-          <img src = "https://covers.openlibrary.org/b/id/${book.COVER_ID}-P.jpg" alt = "">
+          <img src = "https://covers.openlibrary.org/b/id/${book.cover_i}-P.jpg" alt = "">
           <div>
           <p>Título: ${book.title || '—'}</p>
           <br>
@@ -44,24 +44,4 @@ export async function createOption(inputVal, list, container) {
   } catch (err) {
     console.error("Erro:", err);
   }
-};
-
-// Função que cria o elemento do livro escolhido
-export function createBookElement(bookData, main) {
-  const bookElement = document.createElement('div');
-  bookElement.classList.add('bookElement');
-
-
-  // Aqui usa diretamente os dados do livro
-  bookElement.innerHTML = `
-     <h3>${bookData.title}</h3>
-     <p>Autor: ${bookData.author_name}</p>
-     <button id = 'deleteBtn'>Excluir</button>`;
-
-  main.appendChild(bookElement);
-
-  // Lógica de deletar 
-  bookElement.querySelector('#deleteBtn').addEventListener('click', () => {
-    bookElement.remove();
-  })
 };
