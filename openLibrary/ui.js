@@ -14,7 +14,7 @@ export async function createOption(inputVal, list, container) {
     if (!Array.isArray(data.docs)) {
       console.error("Resposta inválida", data);
       return;
-    }
+    };
 
     // Cria um parágrafo para cada livro
     data.docs.forEach(book => {
@@ -30,28 +30,26 @@ export async function createOption(inputVal, list, container) {
         const bookElement = document.createElement('div');
         bookElement.classList.add('bookElement');
 
-        const coverURL = getCoverURL(book)
+        const coverURL = getCoverURL(book);
         
         bookElement.innerHTML = `
           ${coverURL ? `<img src="${coverURL}" alt="Capa do livro">` : ""}
           <div>
             <p>Título: ${book.title || '—'}</p>
             <p>Autor: ${book.author_name ? book.author_name[0] : 'Desconhecido'}</p>
+            <button class = "delBtn">Delete</button>
           </div>`;
-
+        
         container.appendChild(bookElement);
 
-        const delBtn = document.createElement('button');
-        delBtn.innerHTML = 'Delete';
-        bookElement.appendChild(delBtn);
-
-        delBtn.addEventListener('click', () => {
-          bookElement.innerHTML = '';
-          bookElement.classList.remove('bookElement');
+        const delBtn = bookElement.querySelector('.delBtn');
+        delBtn.addEventListener('click', (event) => {
+          event.stopPropagation()
+          bookElement.remove();
         });
       });
     });
   } catch (err) {
     console.error("Erro:", err);
-  }
+  };
 };
