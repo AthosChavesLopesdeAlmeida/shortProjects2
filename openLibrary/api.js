@@ -21,3 +21,24 @@ export async function searchBook(inputVal) {
 
   return data;
 };
+
+export function getCoverURL(book) {
+
+  // 1. A mais comum no search.json
+  if (book.cover_i) {
+    return `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+  }
+
+  // 2. Muito comum em livros digitalizados por universidades
+  if (book.cover_edition_key) {
+    return `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-M.jpg`;
+  }
+
+  // 3. Também pode aparecer
+  if (book.cover_id) {
+    return `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
+  }
+
+  // 4. Livro sem capa
+  return null;
+};

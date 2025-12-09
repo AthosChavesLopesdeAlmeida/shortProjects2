@@ -1,4 +1,4 @@
-import { searchBook } from "./api.js";
+import { searchBook, getCoverURL } from "./api.js";
 
 export async function createOption(inputVal, list, container) {
   // Limpa a lista
@@ -27,18 +27,28 @@ export async function createOption(inputVal, list, container) {
       list.appendChild(bookOption);
 
       bookOption.addEventListener('click', () => {
-        console.log('livro criado');
         const bookElement = document.createElement('div');
-        bookElement.innerHTML = `
-          <img src = "https://covers.openlibrary.org/b/id/${book.cover_i}-P.jpg" alt = "">
-          <div>
-          <p>Título: ${book.title || '—'}</p>
-          <br>
-          <p>Autor: ${book.author_name ? book.author_name[0] : 'Desconhecido'}</p></div>`;
+        bookElement.classList.add('bookElement');
+
+        const coverURL = getCoverURL(book)
         
-          bookElement.classList.add('bookElement');
+        bookElement.innerHTML = `
+          ${coverURL ? `<img src="${coverURL}" alt="Capa do livro">` : ""}
+          <div>
+            <p>Título: ${book.title || '—'}</p>
+            <p>Autor: ${book.author_name ? book.author_name[0] : 'Desconhecido'}</p>
+          </div>`;
 
         container.appendChild(bookElement);
+
+        const delBtn = document.createElement('button');
+        delBtn.innerHTML = 'Delete';
+        bookElement.appendChild(delBtn);
+
+        delBtn.addEventListener('click', () => {
+          bookElement.innerHTML = '';
+          bookElement.classList.remove('bookElement');
+        });
       });
     });
   } catch (err) {
