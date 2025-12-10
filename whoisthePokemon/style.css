@@ -41,7 +41,6 @@ div {
   height: 250px;
   margin-left: 60px;
   margin-top: 50px;
-  filter: brightness(0);
   transition: filter 0.8s ease;
 }
 

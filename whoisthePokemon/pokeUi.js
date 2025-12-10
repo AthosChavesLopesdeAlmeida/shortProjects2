@@ -9,7 +9,7 @@ export async function createPokemon(container) {
   container.innerHTML = `<img src = ${pokemon.image}>`;
 
   const img = container.querySelector('img');
-  img.style.filter = 'brightness(0)';
+
 
   currentPokemon = pokemon;
 };
@@ -24,10 +24,10 @@ export function checkAnswer(container, input) {
 
   if (answer === correct) {
 
-    input.style.border = '';
+    input.style.border = '1px solid green';
     input.value = '';
 
-    img.style.filter = 'brightness(1)';
+
 
     setTimeout(() => {
       createPokemon(container);
